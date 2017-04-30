@@ -5,11 +5,13 @@ var nav = new Vue({
     open: function(which, e) {
       e.preventDefault();
       modal.active = which;
+      console.log(modal.active);
     },
   }
 });
 
 var modal_submit_login = 'Login';
+var user = 'Anonymous';
 
 var modal = new Vue({
   el: '#login-modal',
@@ -19,7 +21,6 @@ var modal = new Vue({
 
     loginSubmit: modal_submit_login,
     loginUser: '',
-    loginPassword: '',
   },
   methods: {
     close: function(e) {
@@ -29,22 +30,19 @@ var modal = new Vue({
       }
     },
     submit: function(which, e) {
-      e.preventDefault();
-      this.submitted = which
-      var data = {
-        form: which
-      };
 
-      data.user = this.loginUser;
-      this.$set('loginSubmit', 'Logging In...');
+      user = document.getElementById('username').value;
+      document.getElementById('hello').innerText = `Hi, ${user}!`;
+      document.getElementById('hello').style.display = "block";
+      modal.active = null;
 
-      // TODO: submit our `data` variable
+
     }
   }
 });
 
 
-new Vue({
+var someVue = new Vue({
 
   // We want to target the div with an id of 'events'
   el: '#events',
@@ -52,7 +50,7 @@ new Vue({
   // Here we can register any values or collections that hold data
   // for the application
   data: {
-    event: { name: '', description: '', date: '' },
+    event: { user: '', name: '', description: '', date: '' },
     events: []
   },
 
@@ -100,8 +98,9 @@ new Vue({
     // Adds an event to the existing events array
     addEvent: function() {
       if(this.event.name) {
+        this.event.user = user;
         this.events.push(this.event);
-        this.event = { name: '', description: '', date: '' };
+        this.event = { name: '', user: '', description: '', date: '' };
       }
     },
 
