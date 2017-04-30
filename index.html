@@ -6,8 +6,49 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
+  <div id="fake-nav">
+    <a href="#register" @click="open('register', $event)">Register</a>
+    <a href="#login" @click="open('login', $event)">Login</a>
+  </div>
+  <div class="user-modal-container" :class="{ 'active': active }" id="login-modal" @click="close">
+    <div class="user-modal">
+      <ul class="form-switcher">
+        <li @click="flip('register', $event)"><a href="" id="register-form">Register</a>
+
+        </li>
+        <li @click="flip('login', $event)"><a href="" id="login-form">Login</a>
+
+        </li>
+      </ul>
+      <div class="form-register" :class="{ 'active': active == 'register' }" id="form-register">
+        <div class="error-message" v-text="registerError"></div>
+        <input type="text" name="name" placeholder="Name" v-model="registerName" @keyup.enter="submit('register', $event)">
+        <input type="email" name="email" placeholder="Email" v-model="registerEmail" @keyup.enter="submit('register', $event)">
+        <input type="password" name="password" placeholder="Password" v-model="registerPassword" @keyup.enter="submit('register', $event)">
+        <input type="submit" :class="{ 'disabled': submitted == 'register' }" @click="submit('register', $event)" v-model="registerSubmit" id="registerSubmit">
+        <div class="links"> <a href="" @click="flip('login', $event)">Already have an account?</a>
+
+        </div>
+      </div>
+      <div class="form-login" :class="{ 'active': active == 'login' }" id="form-login">
+        <div class="error-message" v-text="loginError"></div>
+        <input type="text" name="user" placeholder="Email or Username" v-model="loginUser" @keyup.enter="submit('login', $event)">
+        <input type="password" name="password" placeholder="Password" v-model="loginPassword" @keyup.enter="submit('login', $event)">
+        <input type="submit" :class="{ 'disabled': submitted == 'login' }" @click="submit('login', $event)" v-model="loginSubmit" id="loginSubmit">
+        <div class="links"> <a href="" @click="flip('password', $event)">Forgot your password?</a>
+
+        </div>
+      </div>
+      <div class="form-password" :class="{ 'active': active == 'password' }" id="form-password">
+        <div class="error-message" v-text="passwordError"></div>
+        <input type="text" name="email" placeholder="Email" v-model="passwordEmail" @keyup.enter="submit('password', $event)">
+        <input type="submit" :class="{ 'disabled': submitted == 'password' }" @click="submit('password', $event)" v-model="passwordSubmit" id="passwordSubmit">
+      </div>
+    </div>
+  </div>
 
   <!-- navigation bar -->
   <nav class="navbar navbar-default">
@@ -26,21 +67,21 @@
           <h3>Add an Event</h3>
         </div>
         <div class="panel-body">
-        
+
           <div class="form-group">
             <input class="form-control" placeholder="Event Name" v-model="event.name">
           </div>
-        
+
           <div class="form-group">
             <textarea class="form-control" placeholder="Event Description" v-model="event.description"></textarea>
           </div>
-        
+
           <div class="form-group">
             <input type="date" class="form-control" placeholder="Date" v-model="event.date">
           </div>
-        
+
           <button class="btn btn-primary" v-on:click="addEvent">Submit</button>
-        
+
         </div>
       </div>
     </div>
@@ -50,17 +91,17 @@
       <div class="list-group">
         <a href="#" class="list-group-item" v-for="(event, index) in events">
           <h4 class="list-group-item-heading">
-            <i class="glyphicon glyphicon-bullhorn"></i> 
+            <i class="glyphicon glyphicon-bullhorn"></i>
             {{ event.name }}
           </h4>
-      
+
           <h5>
-            <i class="glyphicon glyphicon-calendar" v-if="event.date"></i> 
+            <i class="glyphicon glyphicon-calendar" v-if="event.date"></i>
             {{ event.date }}
           </h5>
-      
+
           <p class="list-group-item-text" v-if="event.description">{{ event.description }}</p>
-      
+
           <button class="btn btn-xs btn-danger" v-on:click="deleteEvent(index)">Delete</button>
         </a>
       </div>
