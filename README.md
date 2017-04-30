@@ -71,4 +71,12 @@ Let’s connect our html to vue! In the div class “panel-body”, you will see
 ```
 :rocket: Now do the same for description and date inputs by using event.description and event.date.
 
-V-model assigns a specific spot on an event to it’s element. The value we input into these fields will be attached to ViewModel and be available for vue. 
+V-model assigns a specific spot on an event to it’s element. The value we input into these fields will be attached to ViewModel and be available for vue.
+
+
+
+Testing out Vue
+
+
+Trying Vue for the first time, and getting [this awesome tutorial](https://scotch.io/tutorials/build-an-app-with-vue-js-a-lightweight-alternative-to-angularjs)
+working with Vue 2.0.
