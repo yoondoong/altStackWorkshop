@@ -1,8 +1,33 @@
+
+#fake-nav {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 20px;
+  text-align: center;
+  margin: 10px;
+  color: black;
+}
+
+#login-text {
+  display: flex;
+  margin: 10px;
+  padding: 20px;
+  color: black;
+}
+
+
 .user-modal-container * {
   box-sizing: border-box;
 }
 
 .user-modal-container {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -16,10 +41,6 @@
   font-family: 'Lato', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
   font-size: 14px;
   background-color: rgba(17, 17, 17, .9);
-  -webkit-transition: all 0.25s linear;
-  -moz-transition: all 0.25s linear;
-  -o-transition: all 0.25s linear;
-  -ms-transition: all 0.25s linear;
   transition: all 0.25s linear;
 }
 
@@ -29,53 +50,23 @@
 }
 
 .user-modal-container .user-modal {
-  position: relative;
-  margin: 50px auto;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
   width: 90%;
-  max-width: 500px;
+  width: 300px;
   background-color: #f6f6f6;
   cursor: initial;
 }
 
-.user-modal-container .form-login,
-.user-modal-container .form-register,
-.user-modal-container .form-password {
-  padding: 75px 25px 25px;
-  display: none;
+.user-modal-container .form-login {
+  display: flex;
+  padding: 25px 25px;
 }
 
-.user-modal-container .form-login.active,
-.user-modal-container .form-register.active,
-.user-modal-container .form-password.active {
+.user-modal-container .form-login.active {
   display: block;
-}
-
-.user-modal-container ul.form-switcher {
-  margin: 0;
-  padding: 0;
-}
-
-.user-modal-container ul.form-switcher li {
-  list-style: none;
-  display: inline-block;
-  width: 50%;
-  float: left;
-  margin: 0;
-}
-
-.user-modal-container ul.form-switcher li a {
-  width: 100%;
-  display: block;
-  height: 50px;
-  line-height: 50px;
-  color: #666666;
-  background-color: #dddddd;
-  text-align: center;
-}
-
-.user-modal-container ul.form-switcher li a.active {
-  color: #000000;
-  background-color: #f6f6f6;
 }
 
 .user-modal-container input {

@@ -9,8 +9,6 @@ var nav = new Vue({
   }
 });
 
-var modal_submit_register = 'Register';
-var modal_submit_password = 'Reset Password';
 var modal_submit_login = 'Login';
 
 var modal = new Vue({
@@ -19,35 +17,15 @@ var modal = new Vue({
     active: null,
     submitted: null,
 
-    // Submit button text
-    registerSubmit: modal_submit_register,
-    passwordSubmit: modal_submit_password,
     loginSubmit: modal_submit_login,
-
-    // Modal text fields
-    registerName: '',
-    registerEmail: '',
-    registerPassword: '',
     loginUser: '',
     loginPassword: '',
-    passwordEmail: '',
-
-    // Modal error messages
-    registerError: '',
-    loginError: '',
-    passwordError: '',
   },
   methods: {
     close: function(e) {
       e.preventDefault();
       if (e.target === this.$el) {
         this.active = null;
-      }
-    },
-    flip: function(which, e) {
-      e.preventDefault();
-      if (which !== this.active) {
-        this.active = which;
       }
     },
     submit: function(which, e) {
@@ -57,23 +35,8 @@ var modal = new Vue({
         form: which
       };
 
-      switch (which) {
-        case 'register':
-          data.name = this.registerName;
-          data.email = this.registerEmail;
-          data.password = this.registerPassword;
-          this.$set('registerSubmit', 'Registering...');
-          break;
-        case 'login':
-          data.user = this.loginUser;
-          data.password = this.loginPassword;
-          this.$set('loginSubmit', 'Logging In...');
-          break;
-        case 'password':
-          data.email = this.passwordEmail;
-          this.$set('passwordSubmit', 'Resetting Password...')
-          break;
-      }
+      data.user = this.loginUser;
+      this.$set('loginSubmit', 'Logging In...');
 
       // TODO: submit our `data` variable
     }
