@@ -63,23 +63,18 @@ var someVue = new Vue({
 
   // Methods we want to use in our application are registered here
   methods: {
+
     // We dedicate a method to retrieving and setting some data
     fetchEvents: function() {
-
-      var events = [];
-
-      $.ajax({
-        type:"GET",
-        url: "https://hidden-retreat-66994.herokuapp.com/AllEvents",
-        datatype: 'jsonp',
-        sucess: function(response){
-          console.log(response);
-          events.push(response);
-        }
+      console.log('got called');
+      let events = '';
+      let arr = [];
+      $.get("https://hidden-retreat-66994.herokuapp.com/AllEvents", (data) => {
+        events = data.replace(/([\'])/g,"\"");
+        console.log(events);
+        arr = JSON.parse(events);
+        this.events =  arr;
       });
-
-      // Set the collection of events
-      this.events = events;
 
     },
 
@@ -88,6 +83,7 @@ var someVue = new Vue({
       if(this.event.name) {
         this.event.user = user;
         this.events.push(this.event);
+        console.log(this.events);
 
         $.post("https://hidden-retreat-66994.herokuapp.com/PutEvent", {
             name: this.event.name,
@@ -98,13 +94,22 @@ var someVue = new Vue({
 
         this.event = { name: '', user: '', description: '', date: '' };
       }
+      window.location.reload();
     },
 
     deleteEvent: function(index) {
       if(confirm("Are you sure you want to delete this event?")) {
         // $remove is a Vue convenience method similar to splice
-        this.events.splice(index, 1);
+        // this.events.splice(index, 1);
+        console.log(this.events[index].name);
+        $.post("https://hidden-retreat-66994.herokuapp.com/DeleteEvent", {
+            name: this.events[index].name,
+            user: this.events[index].user,
+            description: this.events[index].description,
+            date: this.events[index].date,
+        });
       }
+      window.location.reload();
     }
   }
 });
