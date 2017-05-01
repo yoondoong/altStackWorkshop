@@ -41,6 +41,7 @@ Python -m SimpleHTTPSERVER 9000
 Visit http://localhost:9000/! Your site should look something like this:
 
 ![initial setup](images/first_setup.png)
+
 **Fun fact**: You can sign in! On the top right corner log in with your name. The app should greet you now.
 
 ## Create a Vue instance
@@ -97,7 +98,7 @@ fetchEvents: function() {
 ```
 Notice **this.events**. It's kind of like React! We're basically resetting vue's events here.
 
-:rocket: Now add fetchEvents to your **mounted** function. We will want to call it:
+:rocket: Now add fetchEvents to your **mounted** function. We will want to call it as:
 ``` javascript
 this.fetchEvents();
 ```
@@ -128,7 +129,7 @@ deleteEvent: function(index) {
 Yay! Now you can add and delete events!
 
 ## Rendering events
-But wait, your events show no content. That's because we have to connect the data to vue. Go to the "list-group" class in **index.html**. First notice **v-for="(event, index) in events"** in the "list-group-item" class. What this does is loop through all the events stored in vue.
+But wait, your events show no content. That's because we have to connect the data to vue. Go to the "list-group" class in **index.html**. First, notice **v-for="(event, index) in events"** in the "list-group-item" class. What this does is loop through all the events from vue.
 
 Now notice the use of **{{ event.name }} by {{ event.user }}**. What's going on here? Basically the html is now accessing the user-inputted name for each event, as well as the username.
 
