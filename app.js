@@ -65,34 +65,22 @@ var someVue = new Vue({
   methods: {
     // We dedicate a method to retrieving and setting some data
     fetchEvents: function() {
-      var events = [
-        {
-          id: 1,
-          name: 'TIFF',
-          description: 'Toronto International Film Festival',
-          date: '2015-09-10'
-        },
-        {
-          id: 2,
-          name: 'The Martian Premiere',
-          description: 'The Martian comes to theatres.',
-          date: '2015-10-02'
-        },
-        {
-          id: 3,
-          name: 'SXSW',
-          description: 'Music, film and interactive festival in Austin, TX.',
-          date: '2016-03-11'
+
+      var events = [];
+
+      $.ajax({
+        type:"GET",
+        url: "https://hidden-retreat-66994.herokuapp.com/AllEvents",
+        datatype: 'jsonp',
+        sucess: function(response){
+          console.log(response);
+          events.push(response);
         }
-      ];
+      });
 
       // Set the collection of events
       this.events = events;
 
-      // or push them on separately
-      // for (var i in events) {
-      //   this.events.push(events[i]);
-      // }
     },
 
     // Adds an event to the existing events array
@@ -100,6 +88,14 @@ var someVue = new Vue({
       if(this.event.name) {
         this.event.user = user;
         this.events.push(this.event);
+
+        $.post("https://hidden-retreat-66994.herokuapp.com/PutEvent", {
+            name: this.event.name,
+            user: this.event.user,
+            description: this.event.description,
+            date: this.event.date,
+        });
+
         this.event = { name: '', user: '', description: '', date: '' };
       }
     },
