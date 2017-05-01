@@ -1,5 +1,11 @@
 We will be using Vue.js and Flask for this workshop. Vue is a javascript framework that we will be using for frontend and Flask is a python-written framework that we will be using for backend.
 
+## Goals for the Workshop:
+We'll be building a single page app that can do the following:
+* Takes as input different events for our class posted by each student
+* The output is a collaborative notice board for cs52!
+* Our hope is to guide you through the steps and have you pick up some Vue and Flask along the way!
+
 Be sure to look out for the following notations:
 * :computer: run in terminal
 * :rocket: this is a key step
