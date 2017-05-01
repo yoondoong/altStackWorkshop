@@ -130,16 +130,17 @@ Now notice the use of **{{ event.name }} by {{ event.user }}**. What's going on 
 Now try it! Let the html handle each event's date and description. Use **event.date** and **event.description**.
 
 ## Hooray!
-Now you have the front-end of your app working! Check it out!
+Now you have the frontend of your app working! Check it out!
+:computer::
 ```
 Python -m SimpleHTTPSERVER 9000
 ```
 You should get something like this:
 
-IMAGE  
+![finished_frontend](images/finished_frontend.png)
 
-## Part 2: Back end
-But wait, there's more!
+## Part 2: Backend
+You thought you were done, didn't you. Now we want to connect our events page to a backend so that
 
 
 
