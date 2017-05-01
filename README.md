@@ -41,8 +41,7 @@ Python -m SimpleHTTPSERVER 9000
 Visit http://localhost:9000/! Your site should look something like this:
 
 ![initial setup](images/first_setup.png)
-
-Fun fact: You can sign in! On the top right corner log in with your name. The app should greet you now.
+**Fun fact**: You can sign in! On the top right corner log in with your name. The app should greet you now.
 
 ## Create a Vue instance
 :rocket: Copy and paste this into the end of your **app.js** file:
@@ -89,25 +88,21 @@ v-on:click="addEvent"
 v-on specifies the type of event that you want an element to react to.
 
 ## Add some events
-Let's get our app to be able to add events! First we need a way to fetch events and render them. :rocket: Lets create a fetchEvents method in **app.js**:
+Let's get our app to be able to add events! First we need a way to fetch events and render them. Lets create a fetchEvents method in **app.js**. :rocket: in the **methods** portion of app.js put:
 ``` javascript
 fetchEvents: function() {
-  var events = [
-    {
-      id: 1,
-      name: 'TIFF',
-      description: 'Toronto International Film Festival',
-      date: '2015-09-10'
-    },
-  ];
+  var events = [];
   this.events = events;
 },
 ```
 Notice **this.events**. It's kind of like React! We're basically resetting vue's events here.
 
-:rocket: Now add fetchEvents to your mounted function. We will want to call it **this.fetchEvents();**.
+:rocket: Now add fetchEvents to your **mounted** function. We will want to call it:
+``` javascript
+this.fetchEvents();
+```
 
-Finally we want the user to be able to add additional events. :rocket: Add this to methods as well:
+Next we want the user to be able to add additional events. :rocket: Add this to methods as well:
 ``` javascript
 addEvent: function() {
   if(this.event.name) {
@@ -120,7 +115,17 @@ addEvent: function() {
 ```
 Here's what's suppose to happen: if a name is inputted, then the function will set the user and then push the current event. How do we do this? The event that you want to push is called **this.event**. The events that you are pushing to is called **this.events**. Use **push** to add this.event to this.events.
 
-Yay! Now you can add events!
+Finally, add a delete function. :rocket: Add this to methods:
+``` javascript
+deleteEvent: function(index) {
+  if(confirm("Are you sure you want to delete this event?")) {
+    // $remove is a Vue convenience method similar to splice
+    this.events.splice(index, 1);
+  }
+},
+```
+
+Yay! Now you can add and delete events!
 
 ## Rendering events
 But wait, your events show no content. That's because we have to connect the data to vue. Go to the "list-group" class in **index.html**. First notice **v-for="(event, index) in events"** in the "list-group-item" class. What this does is loop through all the events stored in vue.
@@ -135,7 +140,7 @@ Now you have the frontend of your app working! Check it out!
 ```
 Python -m SimpleHTTPSERVER 9000
 ```
-You should get something like this:
+After adding events, you should get something like this:
 
 ![finished_frontend](images/finished_frontend.png)
 
