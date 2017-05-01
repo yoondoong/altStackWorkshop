@@ -26,6 +26,7 @@ Import vue.js and vue resource into your html. :rocket: Put these tags at the en
 ``` html
 <script src="node_modules/vue/dist/vue.js"></script>
 <script src="node_modules/vue-resource/dist/vue-resource.js"></script>
+<script src="app.js"></script>
 ```
 :computer: Let’s run it to see what it looks like:
 ```
@@ -35,9 +36,10 @@ Visit http://localhost:9000/! Your site should look something like this:
 
 ![initial setup](images/first_setup.png)
 
+Fun fact: You can sign in! On the top right corner log in with your name. The app should greet you now.
 
 ## Create a Vue instance
-:rocket: Copy and paste this into your app.js file:
+:rocket: Copy and paste this into the end of your **app.js** file:
 ``` javascript
 var someVue = new Vue({
 
@@ -65,7 +67,7 @@ What do we have here?
 * **methods** is where we will hold all our functions
 
 ## Incorporate Vue into the html
-Let’s connect our html to vue! In the div class “panel-body”, you will see three “form-group” classes. In each class is either an input or a textarea element.
+Let’s connect our html to vue! In the div class “panel-body” in **index.html**, you will see three “form-group” classes. In each class is either an input or a textarea element.
 :rocket: We are going to use **v-model** to incorporate vue like so:
 ``` html
 <input class="form-control" placeholder="Event Name" v-model="event.name">
@@ -81,7 +83,7 @@ v-on:click="addEvent"
 v-on specifies the type of event that you want an element to react to.
 
 ## Add some events
-Let's get our app to be able to add events! First we need a way to fetch events and render them. :rocket: Lets create a fetchEvents method:
+Let's get our app to be able to add events! First we need a way to fetch events and render them. :rocket: Lets create a fetchEvents method in **app.js**:
 ``` javascript
 fetchEvents: function() {
   var events = [
@@ -110,7 +112,26 @@ addEvent: function() {
   }
 },
 ```
-Here's what's suppose to happen: if a name is inputted, then the function will set the user and then push the current event. How do we do this? The event that you want to push is called **this.event**. The events that you are pushing to is called **this.events**. Use **push** to add this.event to this.events. 
+Here's what's suppose to happen: if a name is inputted, then the function will set the user and then push the current event. How do we do this? The event that you want to push is called **this.event**. The events that you are pushing to is called **this.events**. Use **push** to add this.event to this.events.
+
+Yay! Now you can add events!
+
+## Rendering events
+But wait, your events show no content. That's because we have to connect the data to vue. Go to the "list-group" class in **index.html**. First notice **v-for="(event, index) in events"** in the "list-group-item" class. What this does is loop through all the events stored in vue.
+
+Now notice the use of **{{ event.name }} by {{ event.user }}**. What's going on here? Basically the html is now accessing the user-inputted name for each event, as well as the username.
+
+Now try it! Let the html handle each event's date and description. Use **event.date** and **event.description**.
+
+## Hooray!
+Now you have the front-end of your app working! Check it out!
+```
+Python -m SimpleHTTPSERVER 9000
+```
+You should get something like this:
+
+IMAGE
+
 
 Testing out Vue
 
