@@ -76,7 +76,6 @@ var someVue = new Vue({
         arr = JSON.parse(events);
         this.events =  arr;
       });
-
     },
 
     // Adds an event to the existing events array
@@ -94,7 +93,6 @@ var someVue = new Vue({
         }).done( function(data) {
           window.location.reload();
         });
-
         this.event = { name: '', user: '', description: '', date: '' };
       }
     },
