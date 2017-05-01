@@ -70,6 +70,7 @@ var someVue = new Vue({
       let events = '';
       let arr = [];
       $.get("https://hidden-retreat-66994.herokuapp.com/AllEvents", (data) => {
+        console.log(data);
         events = data.replace(/([\'])/g,"\"");
         console.log(events);
         arr = JSON.parse(events);
@@ -90,11 +91,12 @@ var someVue = new Vue({
             user: this.event.user,
             description: this.event.description,
             date: this.event.date,
+        }).done( function(data) {
+          window.location.reload();
         });
 
         this.event = { name: '', user: '', description: '', date: '' };
       }
-      window.location.reload();
     },
 
     deleteEvent: function(index) {
@@ -107,9 +109,10 @@ var someVue = new Vue({
             user: this.events[index].user,
             description: this.events[index].description,
             date: this.events[index].date,
+        }).done( function(data) {
+          window.location.reload();
         });
       }
-      window.location.reload();
     }
   }
 });
