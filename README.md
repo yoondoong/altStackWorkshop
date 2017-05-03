@@ -147,7 +147,7 @@ python -m SimpleHTTPServer 9000
 ```
 After adding events, you should get something like this:
 
-![finished_frontend](images/finished_frontend.png)
+![finished_frontend](images/events.png)
 
 ## Part 2: Backend
 You thought you were done, didn't you. Now we want to connect our events page to a backend so that we can create a permanent cs52 events page. First, a little bit about Flask and what we did for this workshop..
