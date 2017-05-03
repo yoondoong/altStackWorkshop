@@ -218,7 +218,7 @@ In addition to your regular canvas submission, submit the answer to:
 *Hint: make sure you read the portion about flask and our backend*
 
 ## Checklist
-:white_check_mark: Installed vue and served a non-reactive events page
-:white_check_mark: Implemented vue in app and created a reactive events page
-:white_check_mark: Connected your events page to our backend database
+:white_check_mark: Installed vue and served a non-reactive events page <br/>
+:white_check_mark: Implemented vue in app and created a reactive events page <br/>
+:white_check_mark: Connected your events page to our backend database <br/>
 :white_check_mark: Optional -- make it even cooler!
