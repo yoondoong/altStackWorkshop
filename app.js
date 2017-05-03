@@ -1,15 +1,15 @@
 // SCROLL DOWN FOR DIRECTIONS
-var user;
 
-document.addEventListener(‘DOMContentLoaded’, function() {
- var loggedInUser = localStorage.getItem(“username”);
+var user;
+document.addEventListener('DOMContentLoaded', function() {
+ var loggedInUser = localStorage.getItem('username');
  if (loggedInUser != null ){
-   document.getElementById(‘hello’).innerText = `Hi, ${loggedInUser}!`;
-   document.getElementById(‘hello’).style.display = “block”;
+   document.getElementById('hello').innerText = `Hi, ${loggedInUser}!`;
+   document.getElementById('hello').style.display = 'block';
    user = loggedInUser;
  }
  else{
-   user = ‘Anonymous’;
+   user = 'Anonymous';
  }
 }, false);
 
@@ -25,6 +25,7 @@ var nav = new Vue({
 });
 
 var modal_submit_login = 'Login';
+// var user = 'Anonymous';
 
 var modal = new Vue({
   el: '#login-modal',
@@ -45,7 +46,7 @@ var modal = new Vue({
     submit: function(which, e) {
 
       user = document.getElementById('username').value;
-      localStorage.setItem(“username”, user);
+      localStorage.setItem('username', user);
       document.getElementById('hello').innerText = `Hi, ${user}!`;
       document.getElementById('hello').style.display = "block";
       modal.active = null;

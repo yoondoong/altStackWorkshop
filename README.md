@@ -220,4 +220,4 @@ In addition to your regular canvas submission, submit the answer to:
 :white_check_mark: Installed vue and served a non-reactive events page <br/>
 :white_check_mark: Implemented vue in app and created a reactive events page <br/>
 :white_check_mark: Connected your events page to our backend database <br/>
-:white_check_mark: Optional -- make it even cooler!
+:white_check_mark: Optional: make it even cooler!
