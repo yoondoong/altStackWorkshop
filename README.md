@@ -26,6 +26,9 @@ Import vue.js and vue resource into your html. :rocket: Put these tags at the en
 ``` html
 <script src="node_modules/vue/dist/vue.js"></script>
 <script src="node_modules/vue-resource/dist/vue-resource.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+crossorigin="anonymous"></script>
 <script src="app.js"></script>
 ```
 :computer: Let’s run it to see what it looks like:
@@ -54,10 +57,14 @@ var eventsPage = new Vue({
   },
 
   // Anything within the mounted function will run when the application loads
-  mounted: function() {},
+  mounted: function() {
+    // call fetchEvents here!
+  },
 
   // Methods we want to use in our application are registered here
-  methods: {}
+  methods: {
+    // add fetchEvents, addEvent, and deleteEvent
+  }
 });
 ```
 What do we have here?
@@ -66,13 +73,16 @@ What do we have here?
 * **mounted** is a function that will be called when the app loads and used to call other methods that will initialize the app’s data
 * **methods** is where we will hold all our functions
 
+Since the html is now reading a vue instance of the events page, your app should now look like this:
+![](images/added_vue.png)
+
 ## Incorporate Vue into the html
 Let’s connect our html to vue! In the div class “panel-body” in **index.html**, you will see three “form-group” classes. In each class is either an input or a textarea element.
-:rocket: We are going to use **v-model** to incorporate vue like so:
+:rocket: We are going to use **v-model** to incorporate vue like in line 39:
 ``` html
 <input class="form-control" placeholder="Event Name" v-model="event.name">
 ```
-:rocket: Now do the same for description and date inputs by using **event.description** and **event.date**.
+:rocket: Now do the same for description and date inputs by using **event.description** and **event.date**. For the textarea and input below add **v-model="[the event info you want to add]"**
 
 V-model assigns a specific spot on an event to it’s element. The value we input into these fields will be attached to ViewModel and be available for vue.
 
@@ -83,7 +93,7 @@ v-on:click="addEvent"
 v-on specifies the type of event that you want an element to react to.
 
 ## Add some events
-Let's get our app to be able to add events! First we need a way to fetch events and render them. Lets create a fetchEvents method in **app.js**. :rocket: in the **methods** portion of app.js put:
+Let's get our app to be able to add events! First we need a way to fetch events and render them. Lets create a fetchEvents method in **app.js**. :rocket: in the **methods** portion of the **eventsPage** instance in app.js put:
 ``` javascript
 fetchEvents: function() {
   var events = [];
@@ -92,7 +102,7 @@ fetchEvents: function() {
 ```
 Notice **this.events**. It's kind of like React! We're basically resetting vue's events here.
 
-:rocket: Now add fetchEvents to your **mounted** function. We will want to call it as:
+:rocket: Now add fetchEvents to your **mounted** function in the **eventsPage** instance. We will want to call it as:
 ``` javascript
 this.fetchEvents();
 ```
@@ -102,13 +112,14 @@ Next we want the user to be able to add additional events. :rocket: Add this to 
 addEvent: function() {
   if(this.event.name) {
     this.event.user = user;
+    // ADD CODE BELOW
     // push the event to this.events below!
 
     this.event = { name: '', user: '', description: '', date: '' };
   }
 },
 ```
-Here's what's suppose to happen: if a name is inputted, then the function will set the user and then push the current event. How do we do this? The event that you want to push is called **this.event**. The events that you are pushing to is called **this.events**. Use **push** to add this.event to this.events.
+:rocket: YOU'RE NOT DONE WITH THAT FUNCTION. YOU MUST ADD CODE. Here's what's suppose to happen: if a name is inputted, then the function will set the user and then push the current event. How do we do this? The event that you want to push is called **this.event**. The events that you are pushing to is called **this.events**. Use **push** to add this.event to this.events.
 
 Finally, add a delete function. :rocket: Add this to methods:
 ``` javascript
@@ -176,14 +187,14 @@ addEvent: function() {
 ``` javascript
 $.post("https://hidden-retreat-66994.herokuapp.com/PutEvent", {
     name: this.event.name,
-    user: // add user
-    description: // add description
-    date: // add date
+    user: // ADD USER HERE
+    description: // ADD DESCRIPTION HERE
+    date: // ADD DATE HERE
 }).done( function(data) {
   window.location.reload();
 });
 ```
-See how we're setting name for the event going into the database with **this.event.name**?
+:rocket: NOTICE. YOU HAVE TO ADD MORE. See how we're setting name for the event going into the database with **this.event.name**?
 We are taking the info we've created in vue and adding them to the event info for the database. Add the rest of the information!
 
 ### deleteEvent
@@ -220,4 +231,5 @@ In addition to your regular canvas submission, submit the answer to:
 :white_check_mark: Installed vue and served a non-reactive events page <br/>
 :white_check_mark: Implemented vue in app and created a reactive events page <br/>
 :white_check_mark: Connected your events page to our backend database <br/>
+:white_check_mark: Sign in and make a post! Jokes appreciated <br/>
 :white_check_mark: Optional: make it even cooler!
