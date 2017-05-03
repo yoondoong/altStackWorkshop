@@ -8,7 +8,8 @@
 </head>
 <body>
   <div id="fake-nav">
-    <a  id="login-text" href="#login" @click="open('login', $event)">Login</a>
+    <a class="navbar-brand"><i class="glyphicon glyphicon-calendar"></i> CS52 Events Calendar</a>
+    <a  id="login-text" href="#login" @click="open('login', $event)"> Please Login First</a>
   </div>
   <div class="user-modal-container" :class="{ 'active': active }" id="login-modal" @click="close">
     <div class="user-modal">
@@ -19,19 +20,12 @@
     </div>
   </div>
 
-  <!-- navigation bar -->
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <a class="navbar-brand"><i class="glyphicon glyphicon-bullhorn"></i> CS52 Events Bulletin Board</a>
-    </div>
-  </nav>
-
   <!-- main body of our application -->
   <div class="container" id="events">
     <div class="col-sm-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 id="hello">Hello</h3>
+          <h3 id="hello">Sup</h3>
           <h3>Add an Event</h3>
         </div>
 
