@@ -132,6 +132,8 @@ deleteEvent: function(index) {
 
 Yay! Now you can add and delete events!
 
+:rocket:: Add an event with the name of your favorite ice cream flavor and take a screenshot of your posted event. You'll submit this screenshot on canvas.
+
 ## Rendering events
 But wait, your events show no content. That's because we have to connect the data to vue. Go to the "list-group" class in **index.html**. First, notice **v-for="(event, index) in events"** in the "list-group-item" class. What this does is loop through all the events from vue.
 
