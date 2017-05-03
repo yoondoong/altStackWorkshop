@@ -30,7 +30,7 @@ Import vue.js and vue resource into your html. :rocket: Put these tags at the en
 ```
 :computer: Let’s run it to see what it looks like:
 ```
-Python -m SimpleHTTPServer 9000
+python -m SimpleHTTPServer 9000
 ```
 Visit http://localhost:9000/! Your site should look something like this:
 
@@ -41,7 +41,7 @@ Visit http://localhost:9000/! Your site should look something like this:
 ## Create a Vue instance
 :rocket: Copy and paste this into the end of your **app.js** file:
 ``` javascript
-var someVue = new Vue({
+var eventsPage = new Vue({
 
   // We want to target the div with an id of 'events'
   el: '#events',
@@ -133,7 +133,7 @@ Now try it! Let the html handle each event's date and description. Use **event.d
 Now you have the frontend of your app working! Check it out!
 :computer::
 ```
-Python -m SimpleHTTPServer 9000
+python -m SimpleHTTPServer 9000
 ```
 After adding events, you should get something like this:
 
@@ -143,3 +143,82 @@ After adding events, you should get something like this:
 You thought you were done, didn't you. Now we want to connect our events page to a backend so that we can create a permanent cs52 events page. First, a little bit about Flask and what we did for this workshop..
 
 ## Flask
+
+## Connecting to backend
+Now it's time to complete the backend part of this assignment! Since Flask has already been set up for you, all you have to do for this workshop is connect the vue event methods to the database. In your **app.js** you should currently have three methods for : fetchEvents, addEvent, and deleteEvent.
+
+### fetchEvents
+:rocket: In your fetchEvents method, replace the code you have with this:
+``` javascript
+let events = '';
+let arr = [];
+$.get("https://hidden-retreat-66994.herokuapp.com/AllEvents", (data) => {
+  events = data.replace(/([\'])/g,"\"");
+  arr = JSON.parse(events);
+  this.events =  arr;
+});
+```
+Now you're grabbing events that exist in the database!
+
+### addEvent
+Now it's time to add your own events to the database. Take a look at your current addEvent method:
+``` javascript
+addEvent: function() {
+  if(this.event.name) {
+    this.event.user = user;
+    this.events.push(this.event);
+    // ADD YOUR CODE HERE
+
+    this.event = { name: '', user: '', description: '', date: '' };
+  }
+},
+```
+:rocket: Where it specifies to add code, insert this:
+``` javascript
+$.post("https://hidden-retreat-66994.herokuapp.com/PutEvent", {
+    name: this.event.name,
+    user: // add user
+    description: // add description
+    date: // add date
+}).done( function(data) {
+  window.location.reload();
+});
+```
+See how we're setting name for the event going into the database with **this.event.name**?
+We are taking the info we've created in vue and adding them to the event info for the database. Add the rest of the information!
+
+### deleteEvent
+Finally, take a look at your deleteEvent method. :rocket: Replace **this.events.splice(index, 1);** with:
+``` javascript
+$.post("https://hidden-retreat-66994.herokuapp.com/DeleteEvent", {
+    name: this.events[index].name,
+    user: this.events[index].user,
+    description: this.events[index].description,
+    date: this.events[index].date,
+}).done( function(data) {
+  window.location.reload();
+});
+```
+We're deleting the event in the database based on it's index.
+
+## Celebrate!!
+Hooray!!! Now you're actually finished!
+
+:computer: Take a look!
+```
+python -m SimpleHTTPServer 9000
+```
+Now we have a cs52 class page of events!!
+
+# BUT WAIT, THERE'S MORE
+In addition to your regular canvas submission, submit the answer to:
+
+**How much wood would a woodchuck chuck if a woodchuck could chuck wood?**
+
+*Hint: make sure you read the portion about flask and our backend*
+
+## Checklist
+:white_check_mark: Installed vue and served a non-reactive events page
+:white_check_mark: Implemented vue in app and created a reactive events page
+:white_check_mark: Connected your events page to our backend database
+:white_check_mark: Optional -- make it even cooler!

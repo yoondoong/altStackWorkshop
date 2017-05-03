@@ -1,3 +1,4 @@
+// SCROLL DOWN FOR DIRECTIONS
 
 var nav = new Vue({
   el: '#fake-nav',
@@ -42,7 +43,7 @@ var modal = new Vue({
 });
 
 
-var someVue = new Vue({
+var eventsPage = new Vue({
 
   // We want to target the div with an id of 'events'
   el: '#events',
@@ -66,13 +67,10 @@ var someVue = new Vue({
 
     // We dedicate a method to retrieving and setting some data
     fetchEvents: function() {
-      console.log('got called');
       let events = '';
       let arr = [];
       $.get("https://hidden-retreat-66994.herokuapp.com/AllEvents", (data) => {
-        console.log(data);
         events = data.replace(/([\'])/g,"\"");
-        console.log(events);
         arr = JSON.parse(events);
         this.events =  arr;
       });
@@ -83,7 +81,6 @@ var someVue = new Vue({
       if(this.event.name) {
         this.event.user = user;
         this.events.push(this.event);
-        console.log(this.events);
 
         $.post("https://hidden-retreat-66994.herokuapp.com/PutEvent", {
             name: this.event.name,
@@ -100,8 +97,6 @@ var someVue = new Vue({
     deleteEvent: function(index) {
       if(confirm("Are you sure you want to delete this event?")) {
         // $remove is a Vue convenience method similar to splice
-        // this.events.splice(index, 1);
-        console.log(this.events[index].name);
         $.post("https://hidden-retreat-66994.herokuapp.com/DeleteEvent", {
             name: this.events[index].name,
             user: this.events[index].user,
