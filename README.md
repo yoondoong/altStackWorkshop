@@ -150,7 +150,7 @@ After adding events, you should get something like this:
 ![finished_frontend](images/events.png)
 
 ## Part 2: Backend
-You thought you were done, didn't you. Now we want to connect our events page to a backend so that we can create a permanent cs52 events page. First, a little bit about Flask and what we did for this workshop..
+You thought you were done, didn't you. However, when you reload the page, your event disappears! So, we want to connect our page to a backend so that we can create permanent CS52 events. First, a little bit about Flask and what we did for this workshop..
 
 ## Flask
 
