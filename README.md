@@ -37,7 +37,7 @@ python -m SimpleHTTPServer 9000
 ```
 Visit http://localhost:9000/! Your site should look something like this:
 
-![initial setup](images/first_setup.png)
+![initial setup](images/setup.png)
 
 **Fun fact**: You can sign in! On the top right corner log in with your name. The app should greet you now.
 
