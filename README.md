@@ -53,7 +53,7 @@ var eventsPage = new Vue({
     events: []
   },
 
-  // Anything within the ready function will run when the application loads
+  // Anything within the mounted function will run when the application loads
   mounted: function() {},
 
   // Methods we want to use in our application are registered here
@@ -114,7 +114,6 @@ Finally, add a delete function. :rocket: Add this to methods:
 ``` javascript
 deleteEvent: function(index) {
   if(confirm("Are you sure you want to delete this event?")) {
-    // $remove is a Vue convenience method similar to splice
     this.events.splice(index, 1);
   }
 },
