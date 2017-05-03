@@ -21,12 +21,6 @@ Now we want to install vue.js and vue resource, as well as bootstrap for fronten
 npm install vue vue-resource bootstrap
 ```
 
-## Install Flask
-:computer: Now we want to install Flask:
-```
-pip install Flask
-```
-
 ## Import vue.js and vue
 Import vue.js and vue resource into your html. :rocket: Put these tags at the end of your html body:
 ``` html
@@ -36,7 +30,7 @@ Import vue.js and vue resource into your html. :rocket: Put these tags at the en
 ```
 :computer: Let’s run it to see what it looks like:
 ```
-Python -m SimpleHTTPSERVER 9000
+Python -m SimpleHTTPServer 9000
 ```
 Visit http://localhost:9000/! Your site should look something like this:
 
@@ -139,7 +133,7 @@ Now try it! Let the html handle each event's date and description. Use **event.d
 Now you have the frontend of your app working! Check it out!
 :computer::
 ```
-Python -m SimpleHTTPSERVER 9000
+Python -m SimpleHTTPServer 9000
 ```
 After adding events, you should get something like this:
 
@@ -147,11 +141,3 @@ After adding events, you should get something like this:
 
 ## Part 2: Backend
 You thought you were done, didn't you. Now we want to connect our events page to a backend so that
-
-
-
-Testing out Vue
-
-
-Trying Vue for the first time, and getting [this awesome tutorial](https://scotch.io/tutorials/build-an-app-with-vue-js-a-lightweight-alternative-to-angularjs)
-working with Vue 2.0.
