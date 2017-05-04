@@ -165,8 +165,7 @@ Now it's time to complete the backend part of this assignment! Since Flask has a
 let events = '';
 let arr = [];
 $.get("https://hidden-retreat-66994.herokuapp.com/AllEvents", (data) => {
-  events = data.replace(/([\'])/g,"\"");
-  arr = JSON.parse(events);
+  arr = JSON.parse(data);
   this.events =  arr;
 });
 ```
