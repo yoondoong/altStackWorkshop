@@ -157,6 +157,7 @@ After adding events, you should get something like this:
 You thought you were done, didn't you. However, when you reload the page, your event disappears! So, we want to connect our page to a backend so that we can create permanent CS52 events. First, a little bit about Flask and what we did for this workshop..
 
 ## Flask
+Using python, Flask, and MySQL we built a REST api to add, delete, and fetch events.  You can look at that code [here](https://github.com/mattgirouard/vue-flask-workshop-backend).  This code is deployed on a Heroku server.  We will be making GET and POST calls to this server below. 
 
 ## Connecting to backend
 Now it's time to complete the backend part of this assignment! Since Flask has already been set up for you, all you have to do for this workshop is connect the vue event methods to the database. In your **app.js** you should currently have three methods for your vue instance: fetchEvents, addEvent, and deleteEvent.
