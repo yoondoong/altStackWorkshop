@@ -10,6 +10,8 @@ Be sure to look out for the following notations:
 * :computer: run in terminal
 * :rocket: this is a key step
 
+:warning: Follow instructions carefully!!!
+
 ## Clone the Repo
 Fork it [here](https://github.com/allisonchuang/altstack_workshop) and then clone the repo
 
@@ -137,7 +139,7 @@ But wait, your events show no content. That's because we have to connect the dat
 
 Now notice the use of **{{ event.name }} by {{ event.user }}**. What's going on here? Basically the html is now accessing the user-inputted name for each event, as well as the username.
 
-Now try it! Let the html handle each event's date and description. Use **event.date** and **event.description**.
+:rocket: Now try it! Let the html handle each event's date and description. Use **event.date** and **event.description**.
 
 ## Hooray!
 Now you have the frontend of your app working! Check it out!
@@ -155,7 +157,7 @@ You thought you were done, didn't you. Now we want to connect our events page to
 ## Flask
 
 ## Connecting to backend
-Now it's time to complete the backend part of this assignment! Since Flask has already been set up for you, all you have to do for this workshop is connect the vue event methods to the database. In your **app.js** you should currently have three methods for : fetchEvents, addEvent, and deleteEvent.
+Now it's time to complete the backend part of this assignment! Since Flask has already been set up for you, all you have to do for this workshop is connect the vue event methods to the database. In your **app.js** you should currently have three methods for your vue instance: fetchEvents, addEvent, and deleteEvent.
 
 ### fetchEvents
 :rocket: In your fetchEvents method, replace the code you have with this:
