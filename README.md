@@ -84,7 +84,7 @@ Let’s connect our html to vue! In the div class “panel-body” in **index.ht
 ``` html
 <input class="form-control" placeholder="Event Name" v-model="event.name">
 ```
-:rocket: Now do the same for description and date inputs by using **event.description** and **event.date**. For the textarea and input below add **v-model="[the event info you want to add]"**
+:rocket: Now do the same for description and date inputs by using **event.description** and **event.date**. For the textarea and input add **v-model="[the event info you want to add]"**
 
 V-model assigns a specific spot on an event to it’s element. The value we input into these fields will be attached to ViewModel and be available for vue.
 
@@ -134,6 +134,8 @@ deleteEvent: function(index) {
 
 Yay! Now you can add and delete events!
 
+:rocket:: Add an event with the name of your favorite ice cream flavor and take a screenshot of your posted event. You'll submit this screenshot on canvas.
+
 ## Rendering events
 But wait, your events show no content. That's because we have to connect the data to vue. Go to the "list-group" class in **index.html**. First, notice **v-for="(event, index) in events"** in the "list-group-item" class. What this does is loop through all the events from vue.
 
@@ -152,7 +154,7 @@ After adding events, you should get something like this:
 ![finished_frontend](images/events.png)
 
 ## Part 2: Backend
-You thought you were done, didn't you. Now we want to connect our events page to a backend so that we can create a permanent cs52 events page. First, a little bit about Flask and what we did for this workshop..
+You thought you were done, didn't you. However, when you reload the page, your event disappears! So, we want to connect our page to a backend so that we can create permanent CS52 events. First, a little bit about Flask and what we did for this workshop..
 
 ## Flask
 
@@ -165,8 +167,7 @@ Now it's time to complete the backend part of this assignment! Since Flask has a
 let events = '';
 let arr = [];
 $.get("https://hidden-retreat-66994.herokuapp.com/AllEvents", (data) => {
-  events = data.replace(/([\'])/g,"\"");
-  arr = JSON.parse(events);
+  arr = JSON.parse(data);
   this.events =  arr;
 });
 ```
