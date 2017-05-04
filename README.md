@@ -157,7 +157,7 @@ After adding events, you should get something like this:
 You thought you were done, didn't you. However, when you reload the page, your event disappears! So, we want to connect our page to a backend so that we can create permanent CS52 events. First, a little bit about Flask and what we did for this workshop..
 
 ## Flask
-Using python, Flask, and MySQL we built a REST api to add, delete, and fetch events.  You can look at that code [here](https://github.com/mattgirouard/vue-flask-workshop-backend).  This code is deployed on a Heroku server.  We will be making GET and POST calls to this server below. 
+Using python, Flask, and MySQL we built a REST api to add, delete, and fetch events. You can look at that code [here](https://github.com/mattgirouard/vue-flask-workshop-backend). Briefly take a look at **api.py** in the repo. You'll get a sense of what Flask does and may want to know a bit about it for later (hint hint wink wink). This code is deployed on a Heroku server. We will be making GET and POST calls to this server below.
 
 ## Connecting to backend
 Now it's time to complete the backend part of this assignment! Since Flask has already been set up for you, all you have to do for this workshop is connect the vue event methods to the database. In your **app.js** you should currently have three methods for your vue instance: fetchEvents, addEvent, and deleteEvent.
@@ -227,9 +227,11 @@ Now we have a cs52 class page of events!!
 # BUT WAIT, THERE'S MORE
 In addition to your regular canvas submission, submit the answer to:
 
-**How much wood would a woodchuck chuck if a woodchuck could chuck wood?**
+**How do you build a REST api with python, Flask, and MySQL?**
 
-*Hint: make sure you read the portion about flask and our backend*
+Haha jokes but seriously take a look at the back end. It's pretty cool!
+
+For clarification: you don't actually have to right anything.
 
 ## Checklist
 :white_check_mark: Installed vue and served a non-reactive events page <br/>
